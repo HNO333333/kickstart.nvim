@@ -626,7 +626,7 @@ require('lazy').setup {
 
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    -- event = 'InsertEnter',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
       {
@@ -718,13 +718,13 @@ require('lazy').setup {
               fallback()
             end
           end, { 'i', 's' }),
-          ['<Esc>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.mapping.abort()
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
+          -- ['<Esc><Esc>'] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     cmp.mapping.abort()
+          --   else
+          --     fallback()
+          --   end
+          -- end, { 'i', 's' }),
           ['<CR>'] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
