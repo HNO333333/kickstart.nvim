@@ -62,3 +62,14 @@ map('v', '<A-k>', ":m '<-2<cr>gv=gv", { desc = 'Move up' })
 
 -- NOTE: Clear search with <esc>
 map({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and clear hlsearch' })
+
+-- NOTE: open new terminal
+-- map('n', '<leader>ot', '<cmd>terminal<CR>', { desc = 'open new terminal' })
+-- floating terminal
+local Util = require 'lazyvim.util'
+local lazyterm = function()
+  Util.terminal(nil, { cwd = Util.root() })
+end
+map('n', '<leader>ot', lazyterm, { desc = 'Terminal (root dir)' })
+
+map('n', '<leader>su', ':SetUnixFormatAndSave<CR>', { desc = '[S]et the fileformat as [U]nix and save it.' })

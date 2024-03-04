@@ -1,10 +1,11 @@
 return {
   'rmagatti/auto-session',
-  config = function ()
-    require("auto-session").setup{
+  event = 'VeryLazy',
+  config = function()
+    require('auto-session').setup {
       log_level = vim.log.levels.ERROR,
       auto_session_enable_last_session = false,
-      auto_session_suppress_dirs = {"~/","C:\\Users\\HNO3"},
+      auto_session_suppress_dirs = { '~/', 'C:\\Users\\HNO3' },
       auto_save_enabled = true,
 
       -- ⚠️ This will only work if Telescope.nvim is installed
@@ -17,5 +18,5 @@ return {
         previewer = false,
       },
     }
-end
+  end,
 }

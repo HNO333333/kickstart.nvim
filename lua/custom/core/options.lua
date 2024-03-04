@@ -14,3 +14,10 @@ if vim.fn.executable 'powershell' == 1 then
 else
   vim.o.shell = 'pwsh'
 end
+
+-- NOTE: file format
+-- vim.o.fileformats = 'unix, dos'
+
+-- NOTE: specify python environment
+-- vim.g.python3_host_prog = '/path/to/your/python/executable'
+-- vim.g.python3_host_prog = 'D:\\programs\\anaconda\\envs\\fyp'

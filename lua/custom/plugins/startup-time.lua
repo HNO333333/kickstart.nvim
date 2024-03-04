@@ -1,4 +1,5 @@
 return {
   'tweekmonster/startuptime.vim',
-  cmd = "StartupTime",
+  cmd = 'StartupTime',
+  enabled = false,
 }

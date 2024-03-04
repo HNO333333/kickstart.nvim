@@ -5,7 +5,7 @@ M.opts = {
   act_as_tab = true,
   act_as_shift_tab = false,
   enable_backwards = true,
-  completion = false,
+  completion = true,
   tabouts = {
     { open = "'", close = "'" },
     { open = '"', close = '"' },
@@ -68,4 +68,3 @@ return M
 --     end,
 --   },
 -- }
-

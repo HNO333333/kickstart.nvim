@@ -571,6 +571,9 @@ require('lazy').setup {
             },
           },
         },
+        -- pyright = { settings = { python = {
+        --   venvPath = 'D:\\programs\\anaconda\\envs\\fyp',
+        -- } } },
       }
 
       -- Ensure the servers and tools above are installed
@@ -813,7 +816,7 @@ require('lazy').setup {
 
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
+        ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'python' },
         -- Autoinstall languages that are not installed
         auto_install = true,
         highlight = { enable = true },
@@ -852,5 +855,6 @@ require('lazy').setup {
 require 'custom.core.keymaps'
 
 require 'custom.core.options'
+require 'custom.core.functions'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -9,5 +9,8 @@ return {
 
     -- You can configure highlights by doing something like
     vim.cmd.hi 'Comment gui=none'
+    require('kanagawa').setup {
+      transparent = true,
+    }
   end,
 }
