@@ -64,12 +64,26 @@ map('v', '<A-k>', ":m '<-2<cr>gv=gv", { desc = 'Move up' })
 map({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and clear hlsearch' })
 
 -- NOTE: open new terminal
--- map('n', '<leader>ot', '<cmd>terminal<CR>', { desc = 'open new terminal' })
 -- floating terminal
 local Util = require 'lazyvim.util'
 local lazyterm = function()
   Util.terminal(nil, { cwd = Util.root() })
 end
 map('n', '<leader>ot', lazyterm, { desc = 'Terminal (root dir)' })
+map('n', '<C-/>', lazyterm, { desc = 'Terminal (root dir)' })
+-- Terminal Mappings
+-- map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+map('t', '<C-h>', '<cmd>wincmd h<cr>', { desc = 'Go to left window' })
+map('t', '<C-j>', '<cmd>wincmd j<cr>', { desc = 'Go to lower window' })
+map('t', '<C-k>', '<cmd>wincmd k<cr>', { desc = 'Go to upper window' })
+map('t', '<C-l>', '<cmd>wincmd l<cr>', { desc = 'Go to right window' })
+map('t', '<C-/>', '<cmd>close<cr>', { desc = 'Hide Terminal' })
+map('t', '<c-_>', '<cmd>close<cr>', { desc = 'which_key_ignore' })
+
+-- NOTE: save unix file format.
 
 map('n', '<leader>su', ':SetUnixFormatAndSave<CR>', { desc = '[S]et the fileformat as [U]nix and save it.' })
+
+-- NOTE: better indent
+map('v', '<', '<gv')
+map('v', '>', '>gv')

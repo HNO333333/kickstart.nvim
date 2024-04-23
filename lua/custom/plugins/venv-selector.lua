@@ -19,11 +19,13 @@
 --
 return {
   'linux-cultist/venv-selector.nvim',
+  -- enabled = false,
   dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
   opts = {
     -- Your options go here
     -- name = "venv",
     -- auto_refresh = false
+    auto_refresh = true,
   },
   -- event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymappings
   keys = {
@@ -33,21 +35,22 @@ return {
     { '<leader>vc', '<cmd>VenvSelectCached<cr>' },
   },
   config = function()
-    vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
-      desc = 'Auto select virtualenv Nvim open',
-      pattern = '*.py',
-      callback = function()
-        print 'Entering Python file.'
-        local venv = vim.fn.findfile('pyproject.toml', vim.fn.getcwd() .. ';')
-        if venv ~= '' then
-          require('venv-selector').retrieve_from_cache()
-        end
-      end,
-      once = true,
-    })
+    -- vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
+    --   desc = 'Auto select virtualenv Nvim open',
+    --   pattern = '*.py',
+    --   callback = function()
+    --     print 'Entering Python file.'
+    --     local venv = vim.fn.findfile('pyproject.toml', vim.fn.getcwd() .. ';')
+    --     if venv ~= '' then
+    --       require('venv-selector').retrieve_from_cache()
+    --     end
+    --   end,
+    --   once = true,
+    -- })
     require('venv-selector').setup {
-      anaconda_envs_path = 'D:\\programs\\anaconda\\envs',
-      anaconda_base_path = 'D:\\programs\\anaconda',
+      anaconda_base_path = 'D:\\programs\\anaconda\\',
+      anaconda_envs_path = 'D:\\programs\\anaconda\\envs\\',
+      fd_binary_name = 'fd',
       -- pyenv_path = 'D:\\programs\\anaconda\\envs',
       anaconda = {
         python_executable = 'python',
