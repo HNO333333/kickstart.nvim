@@ -1,26 +1,22 @@
 -- Smooth animations for cursor movement, scrolling, and window resize/open/close
 -- https://github.com/echasnovski/mini.animate
 -- mini.nvim is already installed in init.lua, so no vim.pack.add is needed here
-require('mini.animate').setup {
+local animate = require('mini.animate')
+
+animate.setup {
   cursor = {
-    -- Set duration to 0 to disable the animation
-    duration = 0,
-    easing = 'quad_out',
+    timing = animate.gen_timing.linear({ duration = 50, unit = 'total' }),
   },
   scroll = {
-    duration = 100,
-    easing = 'quad_out',
+    timing = animate.gen_timing.linear({ duration = 50, unit = 'total' }),
   },
   resize = {
-    duration = 200,
-    easing = 'quad_out',
+    timing = animate.gen_timing.linear({ duration = 100, unit = 'total' }),
   },
   open = {
-    duration = 120,
-    easing = 'quad_out',
+    timing = animate.gen_timing.linear({ duration = 60, unit = 'total' }),
   },
   close = {
-    duration = 80,
-    easing = 'quad_in',
+    timing = animate.gen_timing.linear({ duration = 40, unit = 'total' }),
   },
 }
