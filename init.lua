@@ -169,6 +169,10 @@ do
   -- instead raise a dialog asking if you wish to save the current file(s)
   -- See `:help 'confirm'`
   vim.o.confirm = true
+
+  -- Automatically reload files changed outside of Neovim
+  -- See `:help 'autoread'` and `:help :checktime`
+  vim.o.autoread = true
 end
 
 -- ============================================================
@@ -248,6 +252,18 @@ do
     desc = 'Highlight when yanking (copying) text',
     group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
     callback = function() vim.hl.on_yank() end,
+  })
+
+  -- Reload buffers that were changed on disk (e.g. by git, formatters, or another editor)
+  -- See `:help 'autoread'` and `:help :checktime`
+  vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+    desc = 'Reload files changed outside of Neovim',
+    group = vim.api.nvim_create_augroup('kickstart-auto-reload', { clear = true }),
+    callback = function()
+      -- Only reload buffer-local files; skip special buffers like terminals/quickfix
+      if vim.bo.buftype ~= '' then return end
+      vim.cmd.checktime()
+    end,
   })
 end
 
